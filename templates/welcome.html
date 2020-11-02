@@ -1,0 +1,142 @@
+<h2>
+	Welcome!
+</h2>
+<p>
+	There are 5 different endpoints:
+</p>
+<ol>
+	<li>
+		All articles:
+		<ul>
+			<li>
+				<a href="http://127.0.0.1:5000/all">
+					http://127.0.0.1:5000/all
+				</a>
+			</li>
+			<li>
+			</li>
+		</ul>
+	</li>
+	<li>
+		Search by keyword:
+		<br />
+		<ul>
+			<li>
+				/key/field/keyword
+			</li>
+			<li>
+				example:
+			</li>
+			<li>
+				<a href="http://127.0.0.1:5000/key/topic/joe">
+					http://127.0.0.1:5000/key/topic/joe
+				</a>
+			</li>
+			<li>
+			</li>
+		</ul>
+	</li>
+	<li>
+		Search by date range:
+		<ul>
+			<li>
+				/daterange/from_date/to_date
+			</li>
+			<li>
+				example:
+			</li>
+			<li>
+				<a href="http://127.0.0.1:5000/daterange/2020-10-31/2020-11-10">
+					http://127.0.0.1:5000/daterange/2020-10-31/2020-11-10
+				</a>
+			</li>
+			<li>
+			</li>
+		</ul>
+	</li>
+	<li>
+		Search by date range and keyword:
+		<ul>
+			<li>
+				/keyrange/from_date/to_date/field/keyword
+			</li>
+			<li>
+				example:
+			</li>
+			<li>
+				<a href="http://127.0.0.1:5000/keyrange/2020-10-31/2020-11-10/topic/joe">
+					http://127.0.0.1:5000/keyrange/2020-10-31/2020-11-10/topic/joe
+				</a>
+			</li>
+			<li>
+			</li>
+		</ul>
+	</li>
+	<li>
+		Search by all and indicate columns for display
+		<ul>
+			<li>
+				/specific/column/from_date/to_date/field/keyword
+			</li>
+			<li>
+				example:
+			</li>
+			<li>
+				<a href="http://127.0.0.1:5000/specific/headline/2020-10-31/2020-11-10/topic/joe">
+					http://127.0.0.1:5000/specific/headline/2020-10-31/2020-11-10/topic/joe
+				</a>
+			</li>
+			<li>
+				This will produce only the headline from resulting articles
+			</li>
+		</ul>
+	</li>
+</ol>
+<table>
+	<tbody>
+		<tr>
+			<td>
+				<strong>
+					print_time
+				</strong>
+			</td>
+			<td>
+				<strong>
+					topic
+				</strong>
+			</td>
+			<td>
+				<strong>
+					headline
+				</strong>
+			</td>
+			<td>
+				<strong>
+					summary
+				</strong>
+			</td>
+			<td>
+				<strong>
+					url
+				</strong>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				2020-11-01
+			</td>
+			<td>
+				Joe Biden
+			</td>
+			<td>
+				Biden banks on Hollywood...
+			</td>
+			<td>
+				Hillary Clinton employed a similar strategy in 2016, when....
+			</td>
+			<td>
+				https://www.foxnews.com/politics/biden-celebrity-endorsements-2020-election
+			</td>
+		</tr>
+	</tbody>
+</table>
