@@ -32,6 +32,8 @@ def key(field, keyword):
     count = 1
     query = f"SELECT * FROM articles WHERE {field} LIKE ?"
     new_keyword = str(keyword)
+    if '%' in new_keyword:
+        new_keyword.replace('%', '')
     like_keyword = "%" + new_keyword + "%"
     input_tuple = (like_keyword,)
     q_result_set = db.engine.execute(query, input_tuple)
@@ -64,6 +66,8 @@ def key_range(from_date, to_date, field, keyword):
     count = 1
     query = f"SELECT * FROM articles WHERE print_date BETWEEN ? AND ? AND {field} LIKE ?"
     new_keyword = str(keyword)
+    if '%' in new_keyword:
+        new_keyword.replace('%', '')
     like_keyword = "%" + new_keyword + "%"
     input_tuple = (from_date, to_date, like_keyword)
     q_result_set = db.engine.execute(query, input_tuple)
@@ -82,6 +86,8 @@ def specific(column, from_date, to_date, field, keyword):
     query = f"SELECT {column} FROM articles WHERE print_date BETWEEN ? AND ? AND" \
             f" {field} LIKE ?"
     new_keyword = str(keyword)
+    if '%' in new_keyword:
+        new_keyword.replace('%', '')
     like_keyword = "%" + new_keyword + "%"
     input_tuple = (from_date, to_date, like_keyword)
     q_result_set = db.engine.execute(query, input_tuple)
