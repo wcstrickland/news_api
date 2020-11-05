@@ -149,4 +149,4 @@ api.add_resource(Specific, "/specific/<string:column>/<string:from_date>/<string
 
 if __name__ == "__main__":
     app.run(debug=True)
-# todo try marshal with and fields
+
