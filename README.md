@@ -7,6 +7,8 @@ Created a web scraping program that requests html from a major news outlet and t
 * And the URL for the article.
  
 This information is then compared against a data base and if any of the scraped articles are not currently in the database they are added.
+I created a batch file that executes automatically through windows scheduler (or chron for mac) every hour to constantly update the database.
+
 ![alt text](https://github.com/wcstrickland/news_api/blob/main/example2.png)
 
 ## Phase 2
