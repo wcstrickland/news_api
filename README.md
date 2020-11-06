@@ -7,6 +7,7 @@ Created a web scraping program that requests html from a major news outlet and t
 * And the URL for the article.
  
 This information is then compared against a data base and if any of the scraped articles are not currently in the database they are added.
+![alt text](example.png)
 
 ## Phase 2
 Created a front facing API that allows users to search the data base with high level of specificity through a series of endpoints. This api supports programming language interaction but can be searched via the URL in the browser by anyone.
