@@ -14,3 +14,5 @@ Created a front facing API that allows users to search the data base with high l
 
 ## Phase 3 
 Created a simple static html page with  a brief description of the API’s endpoints and provided examples on how to properly use them. 
+
+![alt text] (https://github.com/wcstrickland/news_api/blob/main/home_page.png)
