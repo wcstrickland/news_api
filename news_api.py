@@ -1,7 +1,12 @@
 from flask import Flask, render_template
-from flask_restful import Api, Resource, fields, marshal_with
+from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Table
+import requests
+from bs4 import BeautifulSoup
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+from stop_words import stop_words
 
 app = Flask(__name__)
 api = Api(app)
@@ -110,6 +115,28 @@ def specific(column, from_date, to_date, field, keyword):
     return article_dict
 
 
+def cloud(json):
+    word_cloud = WordCloud(stopwords=stop_words, max_words=100,
+        background_color="white").generate(text_blob(json))
+    plt.imshow(word_cloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.show()
+
+
+def text_blob(json):
+    string_blob = ""
+    for each in json:
+        try:
+            url = json[each]["url"]
+            source = requests.get(url, timeout=3).text
+            soup = BeautifulSoup(source, 'lxml')
+            article_string = soup.find("div", class_='article-body').text
+            string_blob += article_string
+        except:  # todo dont leave bare exception
+            continue
+    return string_blob
+
+
 class SelectAll(Resource):
     def get(self):
         return select_all()
@@ -135,6 +162,19 @@ class Specific(Resource):
         return specific(column, from_date, to_date, field, keyword)
 
 
+class KeyCloud(Resource):
+    def get(self, field, keyword):
+        return cloud(key(field, keyword))
+
+class DateRangeCloud(Resource):
+    def get(self, from_date, to_date):
+        return cloud(date_range(from_date, to_date))
+
+class KeyRangeCloud(Resource):
+    def get(self, from_date, to_date, field, keyword):
+        return cloud(key_range(from_date, to_date, field, keyword))
+
+
 api.add_resource(SelectAll, '/all')
 
 api.add_resource(Key, "/key/<string:field>/<string:keyword>")
@@ -147,6 +187,15 @@ api.add_resource(KeyRange, "/keyrange/<string:from_date>/<string:to_date>/<strin
 api.add_resource(Specific, "/specific/<string:column>/<string:from_date>/<string:to_date"
                            ">/<string:field>/<string:keyword>")
 
+api.add_resource(KeyCloud, "/key/<string:field>/<string:keyword>/cloud")
+
+api.add_resource(DateRangeCloud, "/daterange/<string:from_date>/<string:to_date>/cloud")
+
+api.add_resource(KeyRangeCloud, "/keyrange/<string:from_date>/<string:to_date>/<string"
+                              ":field>/<string:keyword>/cloud")
+
 if __name__ == "__main__":
     app.run(debug=True)
 
+# todo find how to render a matplot as in a browser rather than in tkinter and redirect
+#  to it
