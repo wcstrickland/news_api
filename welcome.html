@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>
+            Politics-API
+        </title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    </head>
+
+    <body>
+        <h1>Article format</h1>
+        <img src="static/images/example.png" alt="example">
+        <p class="picture-text">
+            The articles contained in this database consist of:<br>1. The date they were published.
+            <br>2. The topic
+            <br>3. The "headline"
+            <br>4. An expanded headline labeled the summary.
+            <br>5. The url to the article
+        </p>
+        <h2>Searching the database</h2>
+        <p class="search-instructions">
+            The API allows you to search the database in a number of ways:
+            <br>*By time frame of publishing.
+            <br>*By occurrence of a key word in a particular field.
+            <br>*A combination of the two.
+            <br>
+            <br>For example you could search for all of the articles from November 14th - November 21st where the headline included the word emergency.
+            <br><br>
+            Furthermore, you can filter the out put of your search to provide only selected fields.
+            <br>
+            The example search described previously could be tailored to yield only the URL for the resulting articles.
+        </p>
+        <h3>Searching by date</h3>
+        <p class="search-date">
+            To search by date:
+            <br>Follow the url to this page with /daterange/"From date"/"To date"
+            <br><br>
+            An example would look like:
+            <br> <a href="http://127.0.0.1:5000/daterange/2020-10-31/2020-11-10">http://127.0.0.1:5000/daterange/2020-10-31/2020-11-10</a>
+            <br>
+            This would provide all articles published between Oct. 31st and Nov. 10th.
+        </p>
+         <h3>Searching by keyword</h3>
+        <p class="search-key">
+            To search by keyword:
+            <br>Follow the url to this page with /key/"The part of the headline you want to search"/"The key word you are looking for"
+            <br><br>
+            An example would look like:
+            <br> <a href="http://127.0.0.1:5000/key/topic/Joe">http://127.0.0.1:5000/key/topic/Joe</a>
+            <br>
+            This would provide all articles where the word "Joe" appeared in the "Topic"
+        </p>
+        <h3>Combining date a search</h3>
+        <p class="search-key-date">
+            To combine the two:
+            <br>Follow the url to this page with /keyrange/"From date"/"To date"/"The part of the headline you want to search"/"The key word you are looking for"
+            <br><br>
+            An example would look like:
+            <br> <a href="http://127.0.0.1:5000/keyrange/2020-10-31/2020-11-10/topic/Joe">http://127.0.0.1:5000/keyrange/2020-10-31/2020-11-10/topic/Joe</a>
+            <br>
+            This would provide all articles where the word "Joe" appeared in the "Topic" during the specified range.
+        </p>
+        <h3>Filtering Results</h3>
+        <p class="filter">
+            To filter result output:
+            <br>Follow the url to this page with /specific/"desired field"/"From date"/"To date"/"The part of the headline you want to search"/"The key word you are looking for"
+            <br><br>
+            An example would look like:
+            <br> <a href="http://127.0.0.1:5000/specific/url/2020-10-31/2020-11-10/topic/Joe">http://127.0.0.1:5000/specific/url/2020-10-31/2020-11-10/topic/Joe</a>
+            <br>
+            This would provide <strong>just the url's</strong> for all articles where the word "Joe" appeared in the "Topic" during the specified range.
+        </p>
+        <h3>Word clouds</h3>
+            <div class="cloud">
+            <p class="word-cloud">
+                When searching by either date or by key word the resulting list of articles <br>can have their content combined and a word cloud <br>visualization of the most common words produced.
+                <br>This excludes "stop words" such as "the", "but", "and" etc.
+                <br><br>
+                At the end of a search simply add /cloud.
+                <br> http://127.0.0.1:5000/key/topic/Joe/cloud
+            </p>
+        </div>
+        <div class="cloud-image">
+            <img src="static/images/new_cloud.png" alt="example">
+        </div>
+
+
+
+    </body>
+</html>
+
+
