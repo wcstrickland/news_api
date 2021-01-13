@@ -12,9 +12,8 @@ I created a batch file that executes automatically through windows scheduler (or
 ![alt text](https://github.com/wcstrickland/news_api/blob/main/example2.png)
 
 ## Phase 2
-Created a front facing API that allows users to search the data base with high level of specificity through a series of endpoints. This api supports programming language interaction but can be searched via the URL in the browser by anyone.
-
+Created a front facing API that allows users to search the data base with high level of specificity through a series of endpoints. The API supports programmatic access via endpoints or simple query string search.
 ## Phase 3 
-Created a simple static html page with  a brief description of the API’s endpoints and provided examples on how to properly use them. 
+Created a simple static html page with a brief description of the API’s endpoints and provided examples on how to properly use them. 
 
 ![alt text](https://github.com/wcstrickland/news_api/blob/main/home_page_img.png)
